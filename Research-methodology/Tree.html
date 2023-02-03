@@ -2052,7 +2052,7 @@ var data = {
 
                 expandAndCollapse: true,
                 animationDuration: 550,
-                animationDurationUpdate: 750,
+                animationDurationUpdate: 300,
                 initialTreeDepth: 4,
             }
         ]
@@ -2061,6 +2061,9 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
 var container = document.getElementById('container');
+container.style.height = '100px';
+
+myChart.resize();
 myChart.on('click', function (params) {
     if (params.componentType === 'series') {
         // 点击到了 series 上
