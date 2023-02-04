@@ -2060,9 +2060,13 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
 var container = document.getElementById('container');
-container.style.height = '100px';
-
+var elesArr = Array.from(new Set(myChart._chartsViews[0]._data._graphicEls));
+var height = 200; // 这里限制最小高
+var currentHeight = 10 * (elesArr.length - 1) || 10; // 每项10px
+var newHeight = Math.max(currentHeight, height);
+container.style.height = newHeight + 'px';
 myChart.resize();
+                
 myChart.on('click', function (params) {
     if (params.componentType === 'series') {
         // 点击到了 series 上
